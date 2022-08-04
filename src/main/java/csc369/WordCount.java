@@ -40,7 +40,7 @@ public class WordCount {
             while (itr.hasNext()) {
                 sum  += itr.next().get();
             }
-            result.set(sum);
+            result.set(sum * 2);
             context.write(word, result);
        }
     }
