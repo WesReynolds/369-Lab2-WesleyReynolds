@@ -12,18 +12,22 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 public class SortKeysByASCValue {
 
-    public static final Class OUTPUT_KEY_CLASS = IntWritable.class;
-    public static final Class OUTPUT_VALUE_CLASS = Text.class;
+    public static final Class OUTPUT_KEY_CLASS = Text.class;
+    public static final Class OUTPUT_VALUE_CLASS = IntWritable.class;
 
-    public static class MapperImpl extends Mapper<LongWritable, Text, IntWritable, Text> {
+    public static class MapperImpl extends Mapper<Text, IntWritable, IntWritable, Text> {
 	private final IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
         @Override
-	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+	protected void map(Text key, IntWritable value, Context context) throws IOException, InterruptedException {
+		word.set(key.toString());
+		context.write(word, key);
+		/*
             StringTokenizer itr = new StringTokenizer(value.toString());
 	          word.set(itr.nextToken());  // ignore whitespace and punctuation
             context.write(new IntWritable(Integer.parseInt(value.toString())), word);
+	    */
         }
     }
 
