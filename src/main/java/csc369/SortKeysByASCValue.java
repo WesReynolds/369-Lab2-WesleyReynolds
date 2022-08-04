@@ -20,7 +20,7 @@ public class SortKeysByASCValue {
 	private Text word = new Text();
 
         @Override
-	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+	protected void map(Text key, LongWritable value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
 	          word.set(itr.nextToken());  // ignore whitespace and punctuation
             context.write(one, word);
