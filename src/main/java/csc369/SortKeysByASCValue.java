@@ -33,7 +33,7 @@ public class SortKeysByASCValue {
         @Override
 	protected void reduce(IntWritable count, Iterable<Text> words, Context context) throws IOException, InterruptedException {        
             for (Text word : words) {
-              result.set(count);
+              result.set((int)count);
               context.write(word, count);
             }
             
