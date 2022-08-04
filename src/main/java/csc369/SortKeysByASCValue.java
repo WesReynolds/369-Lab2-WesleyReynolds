@@ -22,7 +22,7 @@ public class SortKeysByASCValue {
         @Override
 	protected void map(Text key, IntWritable value, Context context) throws IOException, InterruptedException {
 		word.set(key.toString());
-		context.write(word, key);
+		context.write(value, word);
 		/*
             StringTokenizer itr = new StringTokenizer(value.toString());
 	          word.set(itr.nextToken());  // ignore whitespace and punctuation
