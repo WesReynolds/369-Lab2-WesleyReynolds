@@ -22,10 +22,11 @@ public class Report01 {
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
-            while (itr.hasMoreTokens()) {
+	    context.write(itr.nextToken().replaceAll("[\\W]", ""), one);
+            /*while (itr.hasMoreTokens()) {
                 word.set(itr.nextToken().replaceAll("[\\W]", ""));  // ignore whitespace and punctuation
                 context.write(word, one);
-            }
+            }*/
         }
     }
 
