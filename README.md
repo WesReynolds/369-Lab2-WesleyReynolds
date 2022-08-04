@@ -1,1 +1,1 @@
-# CSC-369---Lab-2
+# 369-Lab2-WesleyReynolds
