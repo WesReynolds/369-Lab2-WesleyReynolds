@@ -15,7 +15,7 @@ public class SortKeysByASCValue {
     public static final Class OUTPUT_KEY_CLASS = Text.class;
     public static final Class OUTPUT_VALUE_CLASS = IntWritable.class;
 
-    public static class MapperImpl extends Mapper<Text, IntWritable, IntWritable, Text> {
+    public static class MapperImpl extends Mapper<Text, IntWritable, IntWritable, LongWritable> {
 	private final IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
@@ -32,11 +32,11 @@ public class SortKeysByASCValue {
         }
     }
 
-    public static class ReducerImpl extends Reducer<IntWritable, Text, Text, IntWritable> {
+    public static class ReducerImpl extends Reducer<LongWritable, Text, Text, LongWritable> {
 	private IntWritable result = new IntWritable();
     
         @Override
-	protected void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {        
+	protected void reduce(LongWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {        
             for (Text value : values) {
               //result.set(key.get());
               context.write(value, key);
