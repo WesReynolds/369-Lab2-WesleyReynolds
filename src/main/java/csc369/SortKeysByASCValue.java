@@ -25,13 +25,6 @@ public class SortKeysByASCValue {
 		Text newValue = new Text(itr.nextToken().toString());
 		IntWritable newKey = new IntWritable(Integer.parseInt(itr.nextToken().toString()));
 		context.write(newKey, newValue);
-		//word.set(key.toString());
-		//context.write(Integer.parseInt(value.toString()), word);
-		/*
-            StringTokenizer itr = new StringTokenizer(value.toString());
-	          word.set(itr.nextToken());  // ignore whitespace and punctuation
-            context.write(new IntWritable(Integer.parseInt(value.toString())), word);
-	    */
         }
     }
 
@@ -41,11 +34,8 @@ public class SortKeysByASCValue {
         @Override
 	protected void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {        
             for (Text value : values) {
-              //result.set(key.get());
               context.write(value, key);
             }
-            
        }
     }
-
 }
