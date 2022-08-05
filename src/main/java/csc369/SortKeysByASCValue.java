@@ -32,7 +32,7 @@ public class SortKeysByASCValue {
         }
     }
 
-    public static class ReducerImpl extends Reducer<IntWritable, Iterable<Text>, Text, IntWritable> {
+    public static class ReducerImpl extends Reducer<IntWritable, Text, Text, IntWritable> {
 	private IntWritable result = new IntWritable();
     
         @Override
