@@ -24,10 +24,6 @@ public class Report01 {
             StringTokenizer itr = new StringTokenizer(value.toString());
 	    word.set(itr.nextToken());  // ignore whitespace and punctuation
             context.write(word, one);
-            /*while (itr.hasMoreTokens()) {
-                word.set(itr.nextToken().replaceAll("[\\W]", ""));  // ignore whitespace and punctuation
-                context.write(word, one);
-            }*/
         }
     }
 
@@ -46,5 +42,4 @@ public class Report01 {
             context.write(word, result);
        }
     }
-
 }
