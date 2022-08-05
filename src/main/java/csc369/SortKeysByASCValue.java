@@ -15,13 +15,13 @@ public class SortKeysByASCValue {
     public static final Class OUTPUT_KEY_CLASS = Text.class;
     public static final Class OUTPUT_VALUE_CLASS = IntWritable.class;
 
-    public static class MapperImpl extends Mapper<Text, IntWritable, IntWritable, Text> {
+    public static class MapperImpl extends Mapper<LongWritable, IntWritable, IntWritable, Text> {
 	private final IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
         @Override
-	protected void map(Text key, IntWritable value, Context context) throws IOException, InterruptedException {
-		context.write(value, key);
+	protected void map(LongWritable key, IntWritable value, Context context) throws IOException, InterruptedException {
+		context.write(value, key.toString());
 		//word.set(key.toString());
 		//context.write(Integer.parseInt(value.toString()), word);
 		/*
