@@ -20,9 +20,9 @@ public class SortKeysByASCValue {
 	private Text word = new Text();
 
         @Override
-	protected void map(Object key, IntWritable value, Context context) throws IOException, InterruptedException {
+	protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 		word.set(key.toString());
-		context.write(value, word);
+		context.write(Integer.parseInt(value.toString()), word);
 		/*
             StringTokenizer itr = new StringTokenizer(value.toString());
 	          word.set(itr.nextToken());  // ignore whitespace and punctuation
