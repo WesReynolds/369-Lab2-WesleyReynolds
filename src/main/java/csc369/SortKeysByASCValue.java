@@ -21,7 +21,10 @@ public class SortKeysByASCValue {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		context.write(new IntWritable(Integer.parseInt(value.toString())), new Text(key.toString()));
+		StringTokenizer itr = new StringTokenizer(value.toString());
+		Text newValue = new Text(itr.nextToken().toString());
+		IntWritable newKey = new IntWritable(itr.nextToken());
+		context.write(newKey, newValue);
 		//word.set(key.toString());
 		//context.write(Integer.parseInt(value.toString()), word);
 		/*
