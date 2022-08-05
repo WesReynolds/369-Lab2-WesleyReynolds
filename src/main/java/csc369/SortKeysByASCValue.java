@@ -35,10 +35,10 @@ public class SortKeysByASCValue {
 	private IntWritable result = new IntWritable();
     
         @Override
-	protected void reduce(IntWritable count, Iterable<Text> words, Context context) throws IOException, InterruptedException {        
-            for (Text word : words) {
-              result.set(count.get());
-              context.write(word, result);
+	protected void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {        
+            for (Text value : values) {
+              result.set(key.get());
+              context.write(value, result);
             }
             
        }
