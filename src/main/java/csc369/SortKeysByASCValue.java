@@ -23,7 +23,7 @@ public class SortKeysByASCValue {
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		StringTokenizer itr = new StringTokenizer(value.toString());
 		Text newValue = new Text(itr.nextToken().toString());
-		IntWritable newKey = new IntWritable(itr.nextToken());
+		IntWritable newKey = new IntWritable(Integer.parseInt(itr.nextToken().toString()));
 		context.write(newKey, newValue);
 		//word.set(key.toString());
 		//context.write(Integer.parseInt(value.toString()), word);
