@@ -15,14 +15,15 @@ public class SortKeysByASCValue {
     public static final Class OUTPUT_KEY_CLASS = Text.class;
     public static final Class OUTPUT_VALUE_CLASS = IntWritable.class;
 
-    public static class MapperImpl extends Mapper<Object, Text, Text, IntWritable> {
+    public static class MapperImpl extends Mapper<Text, IntWritable, IntWritable, Text> {
 	private final IntWritable one = new IntWritable(1);
 	private Text word = new Text();
 
         @Override
-	protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
-		word.set(key.toString());
-		context.write(Integer.parseInt(value.toString()), word);
+	protected void map(Text key, IntWritable value, Context context) throws IOException, InterruptedException {
+		context.write(value, key);
+		//word.set(key.toString());
+		//context.write(Integer.parseInt(value.toString()), word);
 		/*
             StringTokenizer itr = new StringTokenizer(value.toString());
 	          word.set(itr.nextToken());  // ignore whitespace and punctuation
@@ -31,14 +32,14 @@ public class SortKeysByASCValue {
         }
     }
 
-    public static class ReducerImpl extends Reducer<IntWritable, Text, Text, IntWritable> {
+    public static class ReducerImpl extends Reducer<IntWritable, Iterable<Text>, Text, IntWritable> {
 	private IntWritable result = new IntWritable();
     
         @Override
 	protected void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {        
             for (Text value : values) {
-              result.set(key.get());
-              context.write(value, result);
+              //result.set(key.get());
+              context.write(value, key);
             }
             
        }
