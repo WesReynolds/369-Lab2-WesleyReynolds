@@ -27,6 +27,7 @@ public class Report02 {
 			if (i == 5) {
 				word.set(token);	
 			}
+			word.set(i.toString());
 		}
             	context.write(word, one);
         }
