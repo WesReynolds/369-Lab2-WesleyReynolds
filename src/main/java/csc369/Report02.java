@@ -24,7 +24,7 @@ public class Report02 {
             	StringTokenizer itr = new StringTokenizer(value.toString(), " ", false);
 		for (int i = 0; i < itr.countTokens(); i++) {
 			String token = itr.nextToken();
-			if (i == 0) {
+			if (i == 5) {
 				word.set(token);	
 			}
 		}
