@@ -27,7 +27,7 @@ public class Report05 {
 		String month = dateTokens[1];
 		String year = dateTokens[2];
 		
-		word.set(month);
+		word.set(month + "-" + year);
 		context.write(word, one);
         }
     }
