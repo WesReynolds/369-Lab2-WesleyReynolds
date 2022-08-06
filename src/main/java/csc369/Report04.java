@@ -21,19 +21,13 @@ public class Report04 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-    		String targetAddress = "64.242.88.10";
-		word.set(targetAddress);
+    		String targetURL = "/twiki/bin/view/Main/TWikiGuest";
 		
-		IntWritable bytesSent;
 		String[] tokens = value.toString().split(" ");
-		if (tokens[0].equals(targetAddress)) {
-			bytesSent = new IntWritable(Integer.parseInt(tokens[tokens.length - 1]));	
+		if (tokens[7].equals(targetAddress)) {
+			word.set(tokens[0]);
+			context.write(word, one);
 		}
-		else {
-			bytesSent = new IntWritable(0);	
-		}
-		
-            	context.write(word, bytesSent);
         }
     }
 
