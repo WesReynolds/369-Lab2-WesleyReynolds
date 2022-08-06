@@ -52,15 +52,35 @@ public class Report05 {
 	private IntWritable result = new IntWritable();
     
         @Override
-	protected void reduce(Text word, Iterable<IntWritable> intOne, Context context) throws IOException, InterruptedException {
-            int sum = 0;
-            Iterator<IntWritable> itr = intOne.iterator();
+	protected void reduce(Text key, Iterable<IntWritable> intOne, Context context) throws IOException, InterruptedException {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("01", "Jan");
+		map.put("02", "Feb");
+		map.put("03", "Mar");
+		map.put("04", "Apr");
+		map.put("05", "May");
+		map.put("06", "Jun");
+		map.put("07", "Jul");
+		map.put("08", "Aug");
+		map.put("09", "Sep");
+		map.put("10", "Oct");
+		map.put("11", "Nov");
+		map.put("12", "Dec");
+		
+		String[] tokens = key.toString().split("-");
+		
+		Text word = new Text();
+		word.set(map.get(tokens[1]) + "-" + tokens[0]);
+		
+		
+            	int sum = 0;
+            	Iterator<IntWritable> itr = intOne.iterator();
         
-            while (itr.hasNext()) {
-                sum  += itr.next().get();
-            }
-            result.set(sum);
-            context.write(word, result);
+            	while (itr.hasNext()) {
+               		sum  += itr.next().get();
+            	}
+            	result.set(sum);
+            	context.write(word, result);
        }
     }
 }
