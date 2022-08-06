@@ -23,7 +23,7 @@ public class Report02 {
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             	StringTokenizer itr = new StringTokenizer(value.toString());
 		for (int i = 0; i < itr.countTokens(); i++) {
-			if (i == itr.countTokens()) {
+			if (i == itr.countTokens() - 1) {
 				word.set(itr.nextToken());	
 			}
 			else {
