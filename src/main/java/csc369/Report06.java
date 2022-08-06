@@ -70,8 +70,8 @@ public class Report06 {
 		
 		String[] tokens = key.toString().split("-");
 		
-		//Text word = new Text();
-		//word.set(tokens[2] + "-" + map.get(tokens[1]) + "-" + tokens[0]);
+		Text word = new Text();
+		word.set(tokens[2] + "-" + map.get(tokens[1]) + "-" + tokens[0]);
 		
 		
             	int sum = 0;
@@ -81,7 +81,7 @@ public class Report06 {
                		sum  += itr.next().get();
             	}
             	result.set(sum);
-            	context.write(key, result);
+            	context.write(word, result);
        }
     }
 }
