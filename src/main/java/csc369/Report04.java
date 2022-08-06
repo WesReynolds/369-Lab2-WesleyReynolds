@@ -24,7 +24,7 @@ public class Report04 {
     		String targetURL = "/twiki/bin/view/Main/TWikiGuest";
 		
 		String[] tokens = value.toString().split(" ");
-		if (tokens[7].equals(targetAddress)) {
+		if (tokens[7].equals(targetURL)) {
 			word.set(tokens[0]);
 			context.write(word, one);
 		}
