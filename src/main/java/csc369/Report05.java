@@ -10,6 +10,8 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 
+import java.util.HashMap;
+
 public class Report05 {
 
     public static final Class OUTPUT_KEY_CLASS = Text.class;
@@ -21,13 +23,27 @@ public class Report05 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("Jan", "01");
+		map.put("Feb", "02");
+		map.put("Mar", "03");
+		map.put("Apr", "04");
+		map.put("May", "05");
+		map.put("Jun", "06");
+		map.put("Jul", "07");
+		map.put("Aug", "08");
+		map.put("Sep", "09");
+		map.put("Oct", "10");
+		map.put("Nov", "11");
+		map.put("Dec", "12");
+		
 		String[] tokens = value.toString().split(" ");
 		String dateToken = tokens[3];
 		String[] dateTokens = dateToken.split("/|:");
-		String month = dateTokens[1];
+		String month = map.get(dateTokens[1]);
 		String year = dateTokens[2];
 		
-		word.set(month + "-" + year);
+		word.set(year + "-" + month);
 		context.write(word, one);
         }
     }
