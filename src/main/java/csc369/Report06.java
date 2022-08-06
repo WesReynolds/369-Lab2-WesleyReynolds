@@ -45,7 +45,10 @@ public class Report06 {
 		String year = dateTokens[2];
 		
 		word.set(year + "-" + month + "-" + day);
-		context.write(word, one);
+		
+		IntWritable bytesSent = new IntWritable(Integer.parseInt(tokens[tokens.length - 1]));
+		
+		context.write(word, bytesSent);
         }
     }
 
