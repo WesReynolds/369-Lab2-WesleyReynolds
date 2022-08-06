@@ -31,7 +31,7 @@ public class Report02 {
 			word.set(String.valueOf(i));
 		}
 		*/
-		String[] tokens = value.toString().split();
+		String[] tokens = value.toString().split(" ");
 		for (int i = 0; i < tokens.length; i++) {
 			if (i == tokens.length - 2) {
 				word.set(token);	
