@@ -48,6 +48,11 @@ public class HadoopApp {
 	    job.setMapperClass(Report02.MapperImpl.class);
 	    job.setOutputKeyClass(Report02.OUTPUT_KEY_CLASS);
 	    job.setOutputValueClass(Report02.OUTPUT_VALUE_CLASS);
+	} else if ("Report03".equalsIgnoreCase(otherArgs[0])) {
+	    job.setReducerClass(Report03.ReducerImpl.class);
+	    job.setMapperClass(Report03.MapperImpl.class);
+	    job.setOutputKeyClass(Report03.OUTPUT_KEY_CLASS);
+	    job.setOutputValueClass(Report03.OUTPUT_VALUE_CLASS);
 	} else if ("SortKeysByASCValue".equalsIgnoreCase(otherArgs[0])) {
 	    job.setReducerClass(SortKeysByASCValue.ReducerImpl.class);
 	    job.setMapperClass(SortKeysByASCValue.MapperImpl.class);
