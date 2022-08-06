@@ -39,11 +39,12 @@ public class Report06 {
 		
 		String[] tokens = value.toString().split(" ");
 		String dateToken = tokens[3];
-		String[] dateTokens = dateToken.split("/|:");
+		String[] dateTokens = dateToken.split("[|/|:");
+		String day = dateTokens[0];
 		String month = map.get(dateTokens[1]);
 		String year = dateTokens[2];
 		
-		word.set(year + "-" + month);
+		word.set(year + "-" + month + "-" + day);
 		context.write(word, one);
         }
     }
@@ -70,7 +71,7 @@ public class Report06 {
 		String[] tokens = key.toString().split("-");
 		
 		Text word = new Text();
-		word.set(map.get(tokens[1]) + "-" + tokens[0]);
+		word.set(tokens[2] + "-" + map.get(tokens[1]) + "-" + tokens[0]);
 		
 		
             	int sum = 0;
