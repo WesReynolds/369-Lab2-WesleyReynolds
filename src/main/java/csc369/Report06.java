@@ -39,7 +39,7 @@ public class Report06 {
 		
 		String[] tokens = value.toString().split(" ");
 		String dateToken = tokens[3];
-		String[] dateTokens = dateToken.split("[|/|:");
+		String[] dateTokens = dateToken.split("[/:");
 		String day = dateTokens[0];
 		String month = map.get(dateTokens[1]);
 		String year = dateTokens[2];
