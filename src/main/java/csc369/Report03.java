@@ -24,12 +24,13 @@ public class Report03 {
     		String targetAddress = "64.242.88.10";
 		word.set(targetAddress);
 		
+		IntWritable bytesSent;
 		String[] tokens = value.toString().split(" ");
 		if (tokens[0].equals(targetAddress)) {
-			IntWritable bytesSent = new IntWritable(Integer.parseInt(tokens[tokens.length - 1]));	
+			bytesSent = new IntWritable(Integer.parseInt(tokens[tokens.length - 1]));	
 		}
 		else {
-			IntWritable bytesSent = new IntWritable(0);	
+			bytesSent = new IntWritable(0);	
 		}
 		
             	context.write(word, bytesSent);
