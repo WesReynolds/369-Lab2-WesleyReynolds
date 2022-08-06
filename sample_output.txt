@@ -1,0 +1,50 @@
+Report 1:
+./gradlew run --args="Report01 input_access_log/ out_report01_temp/"
+./gradlew run --args="SortKeysByASCValue out_report01_temp/ out_report01"
+cat out_report01/part-r*
+/twiki/bin/view/Main/SpamAssassinAndPostFix	17
+/twiki/bin/view/Main/SpamAssassinTaggingOnly	18
+/razor.html	23
+/robots.txt	27
+/favicon.ico	28
+
+Report 2:
+./gradlew run --args="Report02 input_access_log/ out_report02/"
+cat out_report02/part-r*
+200	1272
+302	6
+401	123
+404	5
+
+Report 3:
+./gradlew run --args="Report03 input_access_log/ out_report03/"
+cat out_report03/part-r*
+64.242.88.10	5745035
+
+Report 4:
+./gradlew run --args="Report04 input_access_log/ out_report04_temp/"
+./gradlew run --args="SortKeysByASCValue out_report04_temp/ out_report04/"
+cat out_report04/part-r*
+ts04-ip92.hevanet.com	1
+3_343_lt_someone	1
+h24-70-69-74.ca.shawcable.net	2
+10.0.0.153	12
+
+Report 5:
+./gradlew run --args="Report05 input_access_log/ out_report05/"
+cat out_report05/part-r*
+Mar-2002	1
+Mar-2003	1
+Feb-2004	3
+Mar-2004	1396
+Apr-2004	2
+
+Report 6:
+./gradlew run --args="Report06 input_access_log/ out_report06_temp/"
+./gradlew run --args="SortKeysByASCValue out_report06_temp/ out_report06/"
+cat out_report06/part-r*
+07-Mar-2014	12846
+17-Feb-2004	12851
+17-Apr-2004	12851
+07-Feb-2004	44252
+12-Mar-2004	287227
