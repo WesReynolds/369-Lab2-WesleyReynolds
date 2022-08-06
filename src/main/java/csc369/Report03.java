@@ -22,13 +22,14 @@ public class Report03 {
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
     		String targetAddress = "64.242.88.10";
+		word.set(targetAddress);
 		
 		String[] tokens = value.toString().split(" ");
 		if (tokens[0].equals(targetAddress)) {
-			word.set(tokens[tokens.length - 1]);	
+			IntWritable bytesSent = new IntWritable(Integer.parseInt(tokens[tokens.length - 1]));	
 		}
 		
-            	context.write(word, one);
+            	context.write(word, bytesSent);
         }
     }
 
