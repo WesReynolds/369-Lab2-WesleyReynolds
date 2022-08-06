@@ -28,6 +28,9 @@ public class Report03 {
 		if (tokens[0].equals(targetAddress)) {
 			IntWritable bytesSent = new IntWritable(Integer.parseInt(tokens[tokens.length - 1]));	
 		}
+		else {
+			IntWritable bytesSent = new IntWritable(0);	
+		}
 		
             	context.write(word, bytesSent);
         }
