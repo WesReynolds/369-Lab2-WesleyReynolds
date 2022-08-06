@@ -21,7 +21,7 @@ public class Report04 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-    		String targetURL = "/twiki/bin/rdiff/TWiki/WebSearch";
+    		String targetURL = "/cgi-bin/mailgraph.cgi/mailgraph_0.png";
 		
 		String[] tokens = value.toString().split(" ");
 		if (tokens[6].equals(targetURL)) {
