@@ -23,7 +23,7 @@ public class Report05 {
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		String[] tokens = value.toString().split(" ");
 		String dateToken = tokens[3];
-		String[] dateTokens = dateToken.split("(/*)(:*)");
+		String[] dateTokens = dateToken.split("/|:");
 		String month = dateTokens[1];
 		String year = dateTokens[2];
 		
