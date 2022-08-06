@@ -21,9 +21,9 @@ public class Report01 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            StringTokenizer itr = new StringTokenizer(value.toString());
-	    word.set(itr.nextToken());  // ignore whitespace and punctuation
-            context.write(word, one);
+		String[] tokens = value.toString().split(" ");
+	    	word.set(tokens[6]);
+            	context.write(word, one);
         }
     }
 
