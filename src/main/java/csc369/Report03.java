@@ -21,11 +21,11 @@ public class Report03 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-    String[] tokens = value.toString().split(" ");
-		for (int i = 0; i < tokens.length; i++) {
-			if (i == tokens.length - 2) {
-				word.set(tokens[i]);	
-			}
+    		String targetAddress = "64.242.88.10";
+		
+		String[] tokens = value.toString().split(" ");
+		if (tokens[0].equals(targetAddress)) {
+			word.set(tokens[tokens.length - 1]);	
 		}
 		
             	context.write(word, one);
