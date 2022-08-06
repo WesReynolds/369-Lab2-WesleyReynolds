@@ -30,7 +30,6 @@ public class Report02 {
 				itr.nextToken();	
 			}
 		}
-	    	word.set(itr.nextToken());
             	context.write(word, one);
         }
     }
