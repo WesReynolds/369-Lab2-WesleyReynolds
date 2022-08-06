@@ -21,13 +21,14 @@ public class Report05 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-    		String targetURL = "/cgi-bin/mailgraph.cgi/mailgraph_0.png";
-		
 		String[] tokens = value.toString().split(" ");
-		if (tokens[6].equals(targetURL)) {
-			word.set(tokens[0]);
-			context.write(word, one);
-		}
+		String dateToken = tokens[3];
+		String[] dateTokens = dateToken.split("(/*)(:*)");
+		String month = dateTokens[1];
+		String year = dateTokens[2];
+		
+		word.set(month);
+		context.write(word, one);
         }
     }
 
