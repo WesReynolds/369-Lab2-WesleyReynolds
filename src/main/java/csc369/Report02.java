@@ -21,7 +21,8 @@ public class Report02 {
 
         @Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            	StringTokenizer itr = new StringTokenizer(value.toString(), " ", false);
+            	/*
+		StringTokenizer itr = new StringTokenizer(value.toString(), " ", false);
 		for (int i = 0; i < itr.countTokens(); i++) {
 			String token = itr.nextToken();
 			if (i == 5) {
@@ -29,6 +30,14 @@ public class Report02 {
 			}
 			word.set(String.valueOf(i));
 		}
+		*/
+		String[] tokens = value.toString.split();
+		for (int i = 0; i < tokens.length; i++) {
+			if (i == tokens.length - 2) {
+				word.set(token);	
+			}
+		}
+		
             	context.write(word, one);
         }
     }
